@@ -1,6 +1,8 @@
 import type ZincClient from "@/structs/client";
 import type { Message } from "discord.js";
 import config from "@utils/config";
+import { validatePattern } from "@/utils/regexify";
+import { getEmbed } from "@/utils/embeds";
 
 export default {
     async execute(client: ZincClient, message: Message) {
@@ -15,6 +17,20 @@ export default {
 
         if(cmd.command.developerOnly && !config.ids.bot_devs.includes(message.author.id)) return;
         if(cmd.command.ownerOnly && message.author.id !== config.ids.bot_owner) return;
+
+        if(cmd.command.prefixedData) {
+            const usage = cmd.command.prefixedData.usage;
+            const pattern = validatePattern(usage);
+            const result = pattern.test(message.content);
+
+            if(!result) {
+                const embed = getEmbed(cmd.command.prefixedData.usageEmbedID);
+                await message.reply({
+                    embeds: [embed]
+                });
+                return;
+            }
+        }
 
         try {
             await cmd.command.executePrefixed(message, {

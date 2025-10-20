@@ -12,6 +12,7 @@ export interface Command {
     prefixedCommand?: boolean;
     prefixedData?: {
         usageEmbedID: string;
+        usage: string;
     };
 
     developerOnly?: boolean;
