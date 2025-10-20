@@ -19,15 +19,8 @@ export default {
         if(cmd.command.ownerOnly && message.author.id !== config.ids.bot_owner) return;
 
         if(cmd.command.prefixedData) {
-            const usage = cmd.command.prefixedData.usage;
-            const pattern = validatePattern(usage);
-            const result = pattern.test(message.content);
-
+            const result = cmd.command.prefixedData.checkFunction ? cmd.command.prefixedData.checkFunction(message, ...args) : true;
             if(!result) {
-                const embed = getEmbed(cmd.command.prefixedData.usageEmbedID);
-                await message.reply({
-                    embeds: [embed]
-                });
                 return;
             }
         }

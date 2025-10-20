@@ -38,7 +38,7 @@ class ZincClient extends Client {
     }
 
     private async loadCommands(){
-        console.log(colors.cyan("[Comparator]"), colors.green("Loading commands") + colors.white("..."));
+        console.log(colors.cyan("[Zinc]"), colors.green("Loading commands") + colors.white("..."));
         const cmds = fs.readdirSync('./src/commands/')
         
         for(const dir of cmds){
@@ -56,13 +56,14 @@ class ZincClient extends Client {
                     command: command.default,
                 })
     
-                console.log(newCmd())
+                console.log(newCmd());
+                i++;
             }
         }
     }
 
     private async loadEvents(){
-        console.log(colors.cyan("[Comparator]"), colors.green("Loading events") + colors.white("..."));
+        console.log(colors.cyan("[Zinc]"), colors.green("Loading events") + colors.white("..."));
         const evt = fs.readdirSync('./src/events/')
         for(const file of evt){
             if (file.endsWith('.ts')) {

@@ -13,6 +13,8 @@ export interface Command {
     prefixedData?: {
         usageEmbedID: string;
         usage: string;
+        checkFunction?: (message: Message, ...args: any[]) => boolean;
+        checkFunctionSlash?: (message: Message, ...args: any[]) => boolean;
     };
 
     developerOnly?: boolean;
