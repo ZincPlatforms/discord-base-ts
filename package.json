@@ -1,0 +1,28 @@
+{
+  "name": "comparatorv2",
+  "module": "src/index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "_moduleAliases": {
+    "@": "src",
+    "@utils": "src/utils",
+    "@commands": "src/commands",
+    "@structs": "src/structs",
+    "@interfaces": "src/interfaces",
+    "@events": "src/events",
+    "@db": "src/database"
+  },
+  "dependencies": {
+    "colors": "^1.4.0",
+    "discord.js": "^14.23.2",
+    "dotenv": "^17.2.3",
+    "mongoose": "^8.19.1",
+    "toml": "^3.0.0"
+  }
+}

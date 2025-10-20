@@ -1,0 +1,10 @@
+[project]
+bot_name = "Zinc"
+bot_version = "1.0.0"
+bot_channel = "production"
+[ids]
+bot_owner = ""
+bot_devs = []
+bot_build = 0
+[settings]
+prefix = "!"
